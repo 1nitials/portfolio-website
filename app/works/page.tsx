@@ -32,22 +32,22 @@ export default function Projects() {
       <div className="flex gap-8 justify-center">
         <RiMusicAiFill 
           style={{fontSize: '200px'}} 
-          className={`cursor-pointer hover:text-blue-600 transition ${filter === 'music' ? 'text-blue-600' : ''}`}
+          className={`cursor-pointer hover:text-blue-600 hover:scale-110 transition-all duration-300 transform ${filter === 'music' ? 'text-blue-600 scale-105' : ''}`}
           onClick={() => setFilter(filter === 'music' ? 'all' : 'music')}
         />
         <RiGalleryFill 
           style={{fontSize: '200px'}} 
-          className={`cursor-pointer hover:text-green-600 transition ${filter === 'art' ? 'text-green-600' : ''}`}
+          className={`cursor-pointer hover:text-green-600 hover:scale-110 transition-all duration-300 transform ${filter === 'art' ? 'text-green-600 scale-105' : ''}`}
           onClick={() => setFilter(filter === 'art' ? 'all' : 'art')}
         />
         <FaComputer 
           style={{fontSize: '200px'}} 
-          className={`cursor-pointer hover:text-purple-600 transition ${filter === 'code' ? 'text-purple-600' : ''}`}
+          className={`cursor-pointer hover:text-purple-600 hover:scale-110 transition-all duration-300 transform ${filter === 'code' ? 'text-purple-600 scale-105' : ''}`}
           onClick={() => setFilter(filter === 'code' ? 'all' : 'code')}
         />
         <CgGames 
           style={{fontSize: '200px'}} 
-          className={`cursor-pointer hover:text-red-600 transition ${filter === 'games' ? 'text-red-600' : ''}`}
+          className={`cursor-pointer hover:text-red-600 hover:scale-110 transition-all duration-300 transform ${filter === 'games' ? 'text-red-600 scale-105' : ''}`}
           onClick={() => setFilter(filter === 'games' ? 'all' : 'games')}
         />
       </div>
