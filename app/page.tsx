@@ -4,73 +4,143 @@ import { siGithub } from 'simple-icons'
 import { siInstagram } from 'simple-icons'
 import { siGmail } from 'simple-icons'
 
+const months: string[] = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+const extraColumnMonths = new Set<number>([0, 2, 7, 10, 11]);
+const slotsPerMonth: number = 4;
+
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-16 flex gap-8">
+    <div className="container mx-auto px-4 py-16 space-y-8">
+      {/* Top row */}
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Profile section */}
+        <section className="border border-gray-300 p-6 rounded-lg">
+          <Image src={Dennis} alt="Dennis" width={200} height={200} className="rounded-full" />
+          <div className="flex gap-4 mt-4 justify-left ml-2 text-gray-700">
+            <a href="https://github.com/1nitials" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
+                <path d={siGithub.path} />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/_ronnie.jd/" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
+                <path d={siInstagram.path} />
+              </svg>
+            </a>
+            <a href="mailto:ronnie.1nitials@gmail.com" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
+                <path d={siGmail.path} />
+              </svg>
+            </a>
+          </div>
+          <div className="pt-2 pl-2">
+            <p className="text-2xl text-black font-bold">
+              ronnie
+            </p>
+            <p className="text-xl text-gray-600 font-light">
+              1nitials
+            </p>
+            <p className="pt-4 text-base text-gray-600">
+              developer, artist,
+              <br /> 
+              musician, and so on
+            </p>
+          </div>
+        </section>
+        
+        {/* Showcased Works */}
+        <section className="border border-gray-300 p-6 rounded-lg flex-1">
+          <h1 className="text-xl mb-4">Showcased Works</h1>
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="border border-gray-200 p-4 rounded">
+              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
+              <p className="text-sm text-gray-600">Placeholder description</p>
+            </div>
+            <div className="border border-gray-200 p-4 rounded">
+              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
+              <p className="text-sm text-gray-600">Placeholder description</p>
+            </div>
+            <div className="border border-gray-200 p-4 rounded">
+              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
+              <p className="text-sm text-gray-600">Placeholder description</p>
+            </div>
+            <div className="border border-gray-200 p-4 rounded">
+              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
+              <p className="text-sm text-gray-600">Placeholder description</p>
+            </div>
+            <div className="border border-gray-200 p-4 rounded">
+              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
+              <p className="text-sm text-gray-600">Placeholder description</p>
+            </div>
+            <div className="border border-gray-200 p-4 rounded">
+              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
+              <p className="text-sm text-gray-600">Placeholder description</p>
+            </div>
+          </div>
+        </section>
+      </div>
 
-      {/* Profile section */}
-      <section className="border border-gray-300 p-6 rounded-lg">
-        <Image src={Dennis} alt="Dennis" width={200} height={200} className="rounded-full" />
-        <div className="flex gap-4 mt-4 justify-left ml-2 text-gray-700">
-          <a href="https://github.com/1nitials" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
-              <path d={siGithub.path} />
-            </svg>
-          </a>
-          <a href="https://www.instagram.com/_ronnie.jd/" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
-              <path d={siInstagram.path} />
-            </svg>
-          </a>
-          <a href="mailto:ronnie.1nitials@gmail.com" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
-              <path d={siGmail.path} />
-            </svg>
-          </a>
-        </div>
-        <div className="pt-2 pl-2">
-          <p className="text-2xl text-black font-bold">
-            ronnie
-          </p>
-          <p className="text-xl text-gray-600 font-light">
-            1nitials
-          </p>
-          <p className="pt-4 text-base text-gray-600">
-            questionably average
-          </p>
-        </div>
-      </section>
-      
-      {/* PLACEHOLDER: will add feature functionality later */}
-      <section className="border border-gray-300 p-6 rounded-lg flex-1">
-        <h1 className="text-xl mb-4">Showcased Works</h1>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="border border-gray-200 p-4 rounded">
-            <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-            <p className="text-sm text-gray-600">Placeholder description</p>
+      {/* Botoom row */}
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Activity graph section */}
+        <section className="border border-gray-300 p-6 rounded-lg">
+          <h1 className="text-xl mb-4">XX amount of works this year</h1>
+          <div className="relative">
+            {/* Month labels */}
+            <div className="flex text-xs text-gray-500 mb-2 ml-8">
+              {months.map((month, monthIndex) => {
+                const slotsForMonth =
+                slotsPerMonth + (extraColumnMonths.has(monthIndex) ? 1 : 0);
+
+              return Array.from({ length: slotsForMonth }).map((_, slotIndex) => (
+                <div
+                  key={`${monthIndex}-${slotIndex}`}
+                  style={{ width: "16px" }}
+                  className="text-center"
+                >
+                  {slotIndex === 0 && month}
+                </div>
+              ));
+            })}
+            </div>
+            <div className="flex">
+              {/* Day labels */}
+              <div className="flex flex-col text-xs text-gray-500 mr-2 justify-around">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+              </div>
+              {/* Grid */}
+              <div className="grid grid-rows-7 grid-flow-col gap-1">
+                {/* Empty cells for days before Jan 1 (Thursday = 4th position) */}
+                {Array.from({ length: 4 }, (_, i) => (
+                  <div key={`empty-${i}`} className="w-3 h-3" />
+                ))}
+                {/* 2026 calendar days */}
+                {Array.from({ length: 365 }, (_, i) => (
+                  <div
+                    key={i}
+                    className="w-3 h-3 bg-gray-200 rounded-sm hover:bg-green-400 transition-colors"
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="border border-gray-200 p-4 rounded">
-            <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-            <p className="text-sm text-gray-600">Placeholder description</p>
-          </div>
-          <div className="border border-gray-200 p-4 rounded">
-            <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-            <p className="text-sm text-gray-600">Placeholder description</p>
-          </div>
-          <div className="border border-gray-200 p-4 rounded">
-            <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-            <p className="text-sm text-gray-600">Placeholder description</p>
-          </div>
-          <div className="border border-gray-200 p-4 rounded">
-            <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-            <p className="text-sm text-gray-600">Placeholder description</p>
-          </div>
-          <div className="border border-gray-200 p-4 rounded">
-            <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-            <p className="text-sm text-gray-600">Placeholder description</p>
-          </div>
-        </div>
-      </section>
+          <p className="text-sm text-gray-500 mt-4">Works done on 1 January, 2026</p>
+        </section>
+        <section className="border border-gray-300 p-6 rounded-lg flex-1">
+          <h1 className="text-xl mb-4 text-center">Work Summary</h1>
+        </section>
+      </div>
+    
     </div>
   )
 }
