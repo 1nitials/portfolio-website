@@ -1,51 +1,67 @@
 'use client'
-import { useEffect, useRef } from 'react'
-import { Chart, ChartConfiguration } from 'chart.js/auto'
+import { useEffect, useRef, useState } from 'react'
 
 export default function DoughnutChart() {
   const chartRef = useRef<HTMLCanvasElement>(null)
-  const chartInstance = useRef<Chart | null>(null)
+  const chartInstance = useRef<any>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    if (chartRef.current) {
-      const ctx = chartRef.current.getContext('2d')
-      if (ctx) {
-        // Destroy existing chart if it exists
-        if (chartInstance.current) {
-          chartInstance.current.destroy()
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
         }
+      },
+      { threshold: 0.1 }
+    )
 
-        const config: ChartConfiguration = {
-          type: 'doughnut',
-          data: {
-            labels: ['Frontend', 'Backend', 'Design'],
-            datasets: [{
-              data: [40, 35, 25],
-              backgroundColor: [
-                '#3B82F6',
-                '#10B981', 
-                '#F59E0B'
-              ],
-              borderWidth: 0
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: 'bottom',
-                labels: {
-                  padding: 30,
-                  usePointStyle: true
+    if (chartRef.current) {
+      observer.observe(chartRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (isVisible && chartRef.current) {
+      const loadChart = async () => {
+        const { Chart } = await import('chart.js/auto')
+        const ctx = chartRef.current?.getContext('2d')
+        if (ctx) {
+          if (chartInstance.current) {
+            chartInstance.current.destroy()
+          }
+
+          chartInstance.current = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              labels: ['Frontend', 'Backend', 'Design'],
+              datasets: [{
+                data: [40, 35, 25],
+                backgroundColor: ['#3B82F6', '#10B981', '#F59E0B'],
+                borderWidth: 0
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'bottom',
+                  labels: {
+                    padding: 30,
+                    usePointStyle: true
+                  }
                 }
               }
             }
-          }
+          })
         }
-
-        chartInstance.current = new Chart(ctx, config)
       }
+      
+      loadChart()
     }
 
     return () => {
@@ -53,7 +69,7 @@ export default function DoughnutChart() {
         chartInstance.current.destroy()
       }
     }
-  }, [])
+  }, [isVisible])
 
   return (
     <div className="w-full h-64">

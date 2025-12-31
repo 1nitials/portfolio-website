@@ -1,9 +1,8 @@
 'use client'
 import { useState } from 'react'
-import { RiMusicAiFill } from "react-icons/ri";
-import { RiGalleryFill } from "react-icons/ri";
-import { FaComputer } from "react-icons/fa6";
-import { CgGames } from "react-icons/cg";
+import { RiMusicAiFill, RiGalleryFill } from "react-icons/ri"
+import { FaComputer } from "react-icons/fa6"
+import { CgGames } from "react-icons/cg"
 
 const projects = [
   { filename: 'Beat Maker Pro', description: 'Audio projects and compositions', date: '2024-01-15 14:30', tags: 'audio, creative', category: 'music' },
@@ -51,28 +50,27 @@ export default function Projects() {
           onClick={() => setFilter(filter === 'games' ? 'all' : 'games')}
         />
       </div>
-      <p className="text-sm mb-24">click on an icon to sort</p>
+      <p className="text-sm mb-8">click on an icon to sort</p>
       
-      
-      <div className="max-w-8xl mx-auto text-left">
-        <div className="bg-gray-100 p-4 font-mono text-sm">
-          <h2 className="text-lg font-bold mb-4">Index of /works</h2>
+      <div className="mx-auto text-left overflow-x-auto">
+        <div className="bg-gray-100 p-2 md:p-4 font-mono text-xs md:text-sm min-w-max">
+          <h2 className="text-base md:text-lg font-bold mb-4">Index of /works</h2>
           <table className="w-full">
             <thead>
               <tr>
                 <th className="text-left py-1 w-1/4">Filename</th>
-                <th className="text-left py-1 pl-8 w-2/5">Description</th>
-                <th className="text-left py-1 pl-8 w-1/5">Last Modified</th>
-                <th className="text-left py-1 pl-8 w-1/5">Tags</th>
+                <th className="text-left py-1 pl-2 md:pl-8 w-2/5">Description</th>
+                <th className="text-left py-1 pl-2 md:pl-8 w-1/5">Last Modified</th>
+                <th className="text-left py-1 pl-2 md:pl-8 w-1/5">Tags</th>
               </tr>
             </thead>
             <tbody>
               {filteredProjects.map((project, index) => (
                 <tr key={index} className="hover:bg-gray-200 cursor-pointer">
                   <td className="py-1">{getIcon(project.category)} <a href="#" className="text-blue-600 underline">{project.filename}</a></td>
-                  <td className="py-1 pl-8">{project.description}</td>
-                  <td className="py-1 pl-8">{project.date}</td>
-                  <td className="py-1 pl-8">{project.tags}</td>
+                  <td className="py-1 pl-2 md:pl-8">{project.description}</td>
+                  <td className="py-1 pl-2 md:pl-8">{project.date}</td>
+                  <td className="py-1 pl-2 md:pl-8">{project.tags}</td>
                 </tr>
               ))}
             </tbody>

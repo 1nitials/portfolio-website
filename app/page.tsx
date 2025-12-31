@@ -1,8 +1,6 @@
 import Image from "next/image"
 import Dennis from "../images/dennis.png"
-import { siGithub } from 'simple-icons'
-import { siInstagram } from 'simple-icons'
-import { siGmail } from 'simple-icons'
+import { siGithub, siInstagram, siGmail } from 'simple-icons'
 import DoughnutChart from '../components/DoughnutChart'
 
 const months: string[] = [
