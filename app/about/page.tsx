@@ -1,26 +1,18 @@
 export default function About() {
   return (
     <div className="container mx-auto px-4 py-16">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">About Me</h1>
+      <div className="max-w-xl">
+        <h1 className="text-2xl font-bold mb-8">hello!</h1>
         <div className="prose prose-lg">
           <p className="text-gray-600 mb-6">
-            I'm a passionate full-stack developer with 3+ years of experience building 
-            web applications. I love creating efficient, scalable solutions and learning 
-            new technologies.
+            i made this website to have a better view of my works, 
+            and to easily show it to other people (thus the github-styled layout). i hope to redesign
+            this down the line when i actually figure out how i want my "portfolio" website
+            to ACTUALLY look. i say "portfolio" because i also want this to be my personal site.
           </p>
-          <p className="text-gray-600 mb-6">
-            When I'm not coding, you can find me exploring new coffee shops, 
-            reading tech blogs, or working on open-source projects.
+          <p className="text-gray-600">
+            but in the meantime, have some minimalist slop lol
           </p>
-          <h2 className="text-2xl font-semibold mb-4">Experience</h2>
-          <div className="bg-white p-6 rounded-lg shadow mb-6">
-            <h3 className="text-xl font-semibold">Senior Developer</h3>
-            <p className="text-blue-600">Company Name • 2022 - Present</p>
-            <p className="text-gray-600 mt-2">
-              Led development of customer-facing applications using React and Node.js
-            </p>
-          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,84 @@
+'use client'
+import { useState } from 'react'
+import { RiMusicAiFill } from "react-icons/ri";
+import { RiGalleryFill } from "react-icons/ri";
+import { FaComputer } from "react-icons/fa6";
+import { CgGames } from "react-icons/cg";
+
+const projects = [
+  { filename: 'Beat Maker Pro', description: 'Audio projects and compositions', date: '2024-01-15 14:30', tags: 'audio, creative', category: 'music' },
+  { filename: 'Digital Canvas', description: 'Digital artwork and designs', date: '2024-01-10 09:15', tags: 'visual, design', category: 'art' },
+  { filename: 'Portfolio Site', description: 'Software development projects', date: '2024-01-20 16:45', tags: 'web, app', category: 'code' },
+  { filename: 'Pixel Adventure', description: 'Game development and prototypes', date: '2023-12-05 11:20', tags: 'game, interactive', category: 'games' }
+]
+
+const getIcon = (category: string) => {
+  switch(category) {
+    case 'music': return '🎵'
+    case 'art': return '🎨'
+    case 'code': return '💻'
+    case 'games': return '🎮'
+    default: return '📄'
+  }
+}
+
+export default function Projects() {
+  const [filter, setFilter] = useState('all')
+  
+  const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter)
+
+  return (
+    <div className="container mx-auto px-4 py-16 text-center">
+      <div className="flex gap-8 justify-center">
+        <RiMusicAiFill 
+          style={{fontSize: '200px'}} 
+          className={`cursor-pointer hover:text-blue-600 transition ${filter === 'music' ? 'text-blue-600' : ''}`}
+          onClick={() => setFilter(filter === 'music' ? 'all' : 'music')}
+        />
+        <RiGalleryFill 
+          style={{fontSize: '200px'}} 
+          className={`cursor-pointer hover:text-green-600 transition ${filter === 'art' ? 'text-green-600' : ''}`}
+          onClick={() => setFilter(filter === 'art' ? 'all' : 'art')}
+        />
+        <FaComputer 
+          style={{fontSize: '200px'}} 
+          className={`cursor-pointer hover:text-purple-600 transition ${filter === 'code' ? 'text-purple-600' : ''}`}
+          onClick={() => setFilter(filter === 'code' ? 'all' : 'code')}
+        />
+        <CgGames 
+          style={{fontSize: '200px'}} 
+          className={`cursor-pointer hover:text-red-600 transition ${filter === 'games' ? 'text-red-600' : ''}`}
+          onClick={() => setFilter(filter === 'games' ? 'all' : 'games')}
+        />
+      </div>
+      <p className="text-sm mb-24">click on an icon to sort</p>
+      
+      
+      <div className="max-w-8xl mx-auto text-left">
+        <div className="bg-gray-100 p-4 font-mono text-sm">
+          <h2 className="text-lg font-bold mb-4">Index of /works</h2>
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th className="text-left py-1 w-1/4">Filename</th>
+                <th className="text-left py-1 pl-8 w-2/5">Description</th>
+                <th className="text-left py-1 pl-8 w-1/5">Last Modified</th>
+                <th className="text-left py-1 pl-8 w-1/5">Tags</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredProjects.map((project, index) => (
+                <tr key={index} className="hover:bg-gray-200 cursor-pointer">
+                  <td className="py-1">{getIcon(project.category)} <a href="#" className="text-blue-600 underline">{project.filename}</a></td>
+                  <td className="py-1 pl-8">{project.description}</td>
+                  <td className="py-1 pl-8">{project.date}</td>
+                  <td className="py-1 pl-8">{project.tags}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  )
+}
