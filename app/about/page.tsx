@@ -2,14 +2,15 @@ export default function About() {
   return (
     <div className="container mx-auto px-4 py-16">
       {/* About content */}
-      <div className="max-w-3xl">
+      <div className="max-w">
         <h1 className="text-3xl font-bold mb-8">hello!</h1>
         <div className="prose prose-lg">
           <p className="text-xl text-gray-600 mb-4">
             i made this website to have a better view of my works, 
-            and to easily show it to other people. (thus the very original layout idea i have here) i hope to redesign
+            and to easily show it to other people in any moment in time. (thus the very original layout idea i have here) i hope to redesign
             this down the line when i actually figure out how i want my "portfolio" website
-            to ACTUALLY look.
+            to ACTUALLY look. like i want it to be a good representation of me towards others who are interested enough to
+            click on this page.
           </p>
           <p className="text-gray-600 text-xs mb-16">
             i say "portfolio" because i also want this to be my personal site
