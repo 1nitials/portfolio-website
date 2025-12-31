@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Dennis from "../images/dennis.png"
 import { siGithub, siInstagram, siGmail } from 'simple-icons'
+import { featuredProjects, getIcon } from '../data/projects'
 import DoughnutChart from '../components/DoughnutChart'
 
 const months: string[] = [
@@ -55,30 +56,12 @@ export default function Home() {
         <section className="border border-gray-300 p-6 rounded-lg flex-1">
           <h1 className="text-xl mb-4">Showcased Works</h1>
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-4">
-            <div className="border border-gray-200 p-4 rounded">
-              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-              <p className="text-sm text-gray-600">Placeholder description</p>
-            </div>
-            <div className="border border-gray-200 p-4 rounded">
-              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-              <p className="text-sm text-gray-600">Placeholder description</p>
-            </div>
-            <div className="border border-gray-200 p-4 rounded">
-              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-              <p className="text-sm text-gray-600">Placeholder description</p>
-            </div>
-            <div className="border border-gray-200 p-4 rounded">
-              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-              <p className="text-sm text-gray-600">Placeholder description</p>
-            </div>
-            <div className="border border-gray-200 p-4 rounded">
-              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-              <p className="text-sm text-gray-600">Placeholder description</p>
-            </div>
-            <div className="border border-gray-200 p-4 rounded">
-              <h3 className="font-semibold cursor-pointer">Placeholder</h3>
-              <p className="text-sm text-gray-600">Placeholder description</p>
-            </div>
+            {featuredProjects.map((project, index) => (
+              <div key={index} className="border border-gray-200 p-4 rounded">
+                {getIcon(project.category)} <a href={project.link} target="_blank" rel="noopener noreferrer" className="font-semibold cursor-pointer">{project.filename}</a>
+                <p className="text-sm mt-1 text-gray-600">{project.description}</p>
+              </div>
+            ))}
           </div>
           <div className="flex justify-end mt-4">
             <a href="/works" className="text-xs text-blue-600 hover:text-blue-800">

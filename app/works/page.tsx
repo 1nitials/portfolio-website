@@ -3,23 +3,7 @@ import { useState } from 'react'
 import { RiMusicAiFill, RiGalleryFill } from "react-icons/ri"
 import { FaComputer } from "react-icons/fa6"
 import { CgGames } from "react-icons/cg"
-
-const projects = [
-  { filename: 'Beat Maker Pro', description: 'Audio projects and compositions', date: '2024-01-15 14:30', tags: 'audio, creative', category: 'music' },
-  { filename: 'Digital Canvas', description: 'Digital artwork and designs', date: '2024-01-10 09:15', tags: 'visual, design', category: 'art' },
-  { filename: 'Portfolio Site', description: 'Software development projects', date: '2024-01-20 16:45', tags: 'web, app', category: 'code' },
-  { filename: 'Pixel Adventure', description: 'Game development and prototypes', date: '2023-12-05 11:20', tags: 'game, interactive', category: 'games' }
-]
-
-const getIcon = (category: string) => {
-  switch(category) {
-    case 'music': return '🎵'
-    case 'art': return '🎨'
-    case 'code': return '💻'
-    case 'games': return '🎮'
-    default: return '📄'
-  }
-}
+import { projects, getIcon } from '../../data/projects'
 
 export default function Projects() {
   const [filter, setFilter] = useState('all')

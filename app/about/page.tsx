@@ -7,13 +7,13 @@ export default function About() {
         <div className="prose prose-lg">
           <p className="text-xl text-gray-600 mb-4">
             i made this website to have a better view of my works, 
-            and to easily show it to other people in any moment in time. (thus the very original layout idea i have here) i hope to redesign
+            and to easily show it to other people. (thus the very original layout idea i have here) i hope to redesign
             this down the line when i actually figure out how i want my "portfolio" website
-            to ACTUALLY look. like i want it to be a good representation of me towards others who are interested enough to
-            click on this page.
+            to ACTUALLY look.
           </p>
           <p className="text-gray-600 text-xs mb-16">
-            i say "portfolio" because i also want this to be my personal site
+            i say "portfolio" because i also want this to be my personal site, which explains a lot since i want this
+            site to also be a good representation of who i am
           </p>
           <p className="text-xl text-gray-600">
             but in the meantime, have some minimalist slop lol
