@@ -5,10 +5,10 @@ import { TbPlayerTrackPrevFilled, TbPlayerTrackNextFilled, TbPlayerPlayFilled, T
 export default function Music() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-8 space-y-8">
+      <div className="container mx-auto px-4 space-y-8">
         
         {/* Top Hero Card */}
-        <div className="border-2 border-black rounded-3xl p-12">
+        <div className="border-2 border-black rounded-3xl p-8">
           <div className="flex items-center justify-center">
             <div>
               <h1 className="text-7xl font-extrabold text-black mb-2"
