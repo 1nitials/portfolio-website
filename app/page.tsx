@@ -19,17 +19,18 @@ export default function Home() {
       {/* Main Content */}
       <div className="container mx-auto px-8 space-y-8">
         {/* Row 1: Hero + Showcased Works */}
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-24 justify-center">
           {/* Hero Card */}
           <div className="border-2 border-black rounded-3xl p-8 w-fit">
             <div className="flex items-center gap-6">
               <div>
-                <h1 className="text-5xl font-extrabold text-black leading-none mb-1">RONNIE</h1>
+                <h1 className="text-5xl font-extrabold text-black leading-none mb-1"
+                style={{textShadow: '3px 3px 0px rgba(0,0,0,0.3)'}}>RONNIE</h1>
                 <svg viewBox="0 0 180 38" height="40" className="block leading-none">
                   <text
                   x="0"
-                  y="32"
-                  fontSize="32"
+                  y="36"
+                  fontSize="36"
                   fontWeight="700"
                   fill="white"
                   stroke="black"
@@ -39,8 +40,8 @@ export default function Home() {
                   1NITIALS
                   </text>
                 </svg>
-                <p className="text-gray-600 font-bold text-sm font-jura">
-                  developer, artist,<br />
+                <p className="text-gray-600 font-bold font-jura mt-1">
+                  developer, artist,
                   musician, and so on
                 </p>
               </div>
@@ -54,38 +55,39 @@ export default function Home() {
           </div>
 
           {/* Showcased Works */}
-          <div className="border-2 border-black rounded-3xl p-8 w-fit">
-            <h2 className="text-3xl font-bold mb-6">SHOWCASED WORKS</h2>
+          <div className="rounded-3xl p-8 w-fit">
+            <h2 className="text-3xl font-bold mb-6"
+            style={{textShadow: '2px 2px 0px rgba(0,0,0,0.3)'}}>SHOWCASED WORKS</h2>
             <div className="grid grid-cols-2 gap-6">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border-2 border-black rounded-full"></div>
-                <span className="text-sm font-bold font-jura">suga games store</span>
+                <span className="text-normal font-bold font-jura">suga games store</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border-2 border-black rounded-full"></div>
-                <span className="text-sm font-bold font-jura">quiz quest</span>
+                <span className="text-normal font-bold font-jura">quiz quest</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border-2 border-black rounded-full"></div>
-                <span className="text-sm font-bold font-jura">safedrive insurance</span>
+                <span className="text-normal font-bold font-jura">safedrive insurance</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border-2 border-black rounded-full"></div>
-                <span className="text-sm font-bold font-jura">slap chop!</span>
+                <span className="text-normal font-bold font-jura">slap chop!</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border-2 border-black rounded-full"></div>
-                <span className="text-sm font-bold font-jura">example</span>
+                <span className="text-normal font-bold font-jura">example</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Row 2: Updates + Work Activity */}
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-8 justify-center">
           {/* Current Updates Panel */}
           <div className="border-2 border-black rounded-3xl p-8 relative w-fit">
-            <div className="absolute -top-4 left-8 bg-white px-4">
+            <div className="absolute -top-4 left-2 bg-white px-4">
               <h2 className="text-xl font-bold">current updates</h2>
             </div>
             <div className="mt-4 space-y-4">

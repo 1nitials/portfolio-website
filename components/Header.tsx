@@ -7,7 +7,7 @@ export default function Header() {
   
   return (
     <header className="bg-white shadow-sm font-jura font-bold">
-      <nav className="container mx-auto px-4 py-6 flex justify-center items-center">
+      <nav className="container mx-auto px-4 py-8 flex justify-center items-center">
         <div className="space-x-12">
           <Link 
             href="/" 
