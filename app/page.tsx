@@ -5,7 +5,6 @@ import CurrentUpdates from "../images/current_updates.gif"
 import { siGithub, siInstagram, siGmail } from 'simple-icons'
 import { featuredProjects, getIcon } from '../data/projects'
 import DoughnutChart from '../components/DoughnutChart'
-import { useState } from 'react'
 
 const months: string[] = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -16,7 +15,6 @@ const extraColumnMonths = new Set<number>([0, 2, 7, 10, 11]);
 const slotsPerMonth: number = 4;
 
 export default function Home() {
-  const [gifLoaded, setGifLoaded] = useState(false)
   return (
     <div className="min-h-screen bg-white">
 
@@ -38,7 +36,7 @@ export default function Home() {
                   fontWeight="700"
                   fill="white"
                   stroke="black"
-                  strokeWidth="2"
+                  strokeWidth="3"
                   paintOrder="stroke"
                   >
                   1NITIALS
@@ -48,6 +46,23 @@ export default function Home() {
                   developer, artist,
                   musician, and so on
                 </p>
+                <div className="flex gap-2 mt-2 justify-left text-gray-700">
+            <a href="https://github.com/1nitials" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
+                <path d={siGithub.path} />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/_ronnie.jd/" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
+                <path d={siInstagram.path} />
+              </svg>
+            </a>
+            <a href="mailto:ronnie.1nitials@gmail.com" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
+                <path d={siGmail.path} />
+              </svg>
+            </a>
+          </div>
               </div>
               <Image 
                 src={Dennis} 
