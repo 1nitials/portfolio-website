@@ -1,3 +1,7 @@
+import Image from "next/image"
+import flchan from "../../images/fl_chan.gif"
+import { TbPlayerTrackPrevFilled, TbPlayerTrackNextFilled, TbPlayerPlayFilled, TbArrowsShuffle, TbRepeat } from 'react-icons/tb'
+
 export default function Music() {
   return (
     <div className="min-h-screen bg-white">
@@ -5,20 +9,27 @@ export default function Music() {
         
         {/* Top Hero Card */}
         <div className="border-2 border-black rounded-3xl p-12">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <div>
-              <h1 className="text-6xl font-extrabold text-black mb-2">DISCOGRAPHY</h1>
-              <div className="text-6xl font-extrabold text-transparent" 
-                   style={{WebkitTextStroke: '3px black', WebkitTextFillColor: 'transparent'}}>
+              <h1 className="text-7xl font-extrabold text-black mb-2"
+              style={{textShadow: '3px 3px 0px rgba(0,0,0,0.3)'}}>DISCOGRAPHY</h1>
+              <svg viewBox="0 0 600 72" height="72" className="block leading-none">
+                <text
+                x="0"
+                y="60"
+                fontSize="60"
+                fontWeight="700"
+                fill="white"
+                stroke="black"
+                strokeWidth="3"
+                paintOrder="stroke"
+                >
                 COMING SOON!
-              </div>
+                </text>
+              </svg>
             </div>
             <div>
-              <img 
-                src="https://placehold.co/200x200/f0f0f0/666?text=Character" 
-                alt="Character placeholder"
-                className="w-48 h-48"
-              />
+              <Image alt="FL-chan" src={flchan} width={250} height={250}/>
             </div>
           </div>
         </div>
@@ -87,39 +98,39 @@ export default function Music() {
             </div>
 
             {/* Right Section - Track Details / Player */}
-            <div className="w-80 space-y-6">
+            <div className="w-80 space-y-2">
               
               {/* Album Cover */}
-              <div className="bg-gray-100 rounded-3xl aspect-square flex items-center justify-center border border-black">
+              <div className="bg-gray-100 rounded-3xl aspect-square flex items-center justify-center">
                 <span className="text-gray-500">album cover here</span>
               </div>
               
               {/* Audio Controls */}
-              <div className="flex justify-center gap-4">
-                <button className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
-                  🔀
+              <div className="flex justify-center">
+                <button className="w-10 h-10 rounded-full flex items-center justify-center">
+                  <TbArrowsShuffle size={16} />
                 </button>
-                <button className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
-                  ⏮
+                <button className="w-10 h-10 rounded-full flex items-center justify-center">
+                  <TbPlayerTrackPrevFilled size={16} />
                 </button>
-                <button className="w-12 h-12 border border-black rounded-full flex items-center justify-center">
-                  ▶️
+                <button className="w-10 h-10 rounded-full flex items-center justify-center">
+                  <TbPlayerPlayFilled size={20} />
                 </button>
-                <button className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
-                  ⏭
+                <button className="w-10 h-10 rounded-full flex items-center justify-center">
+                  <TbPlayerTrackNextFilled size={16} />
                 </button>
-                <button className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
-                  🔁
+                <button className="w-10 h-10 rounded-full flex items-center justify-center">
+                  <TbRepeat size={16} />
                 </button>
               </div>
               
               {/* Tags Box */}
-              <div className="border border-black rounded-3xl p-4">
+              <div className="border border-grey rounded-3xl p-4">
                 <span className="text-sm">tags: jazz, short, demo, warmup</span>
               </div>
               
               {/* Description Box */}
-              <div className="border border-black rounded-3xl p-6 h-32">
+              <div className="border border-grey rounded-3xl p-6 h-32">
                 <span className="text-gray-400 text-sm">track description...</span>
               </div>
               
