@@ -11,30 +11,30 @@ export default function Projects() {
   const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter)
 
   return (
-    <div className="container mx-auto px-4 py-16 text-center">
-      <div className="flex gap-8 justify-center">
+    <div className="container mx-auto px-4 py-8 md:py-16 text-center">
+      <div className="grid grid-cols-2 md:flex gap-4 md:gap-8 justify-center">
         <RiMusicAiFill 
-          style={{fontSize: '200px'}} 
-          className={`cursor-pointer hover:text-blue-600 hover:scale-110 transition-all duration-300 transform ${filter === 'music' ? 'text-blue-600 scale-105' : ''}`}
+          style={{fontSize: '120px'}} 
+          className={`cursor-pointer hover:text-blue-600 hover:scale-110 transition-all duration-300 transform md:text-[200px] ${filter === 'music' ? 'text-blue-600 scale-105' : ''}`}
           onClick={() => setFilter(filter === 'music' ? 'all' : 'music')}
         />
         <RiGalleryFill 
-          style={{fontSize: '200px'}} 
-          className={`cursor-pointer hover:text-green-600 hover:scale-110 transition-all duration-300 transform ${filter === 'art' ? 'text-green-600 scale-105' : ''}`}
+          style={{fontSize: '120px'}} 
+          className={`cursor-pointer hover:text-green-600 hover:scale-110 transition-all duration-300 transform md:text-[200px] ${filter === 'art' ? 'text-green-600 scale-105' : ''}`}
           onClick={() => setFilter(filter === 'art' ? 'all' : 'art')}
         />
         <FaComputer 
-          style={{fontSize: '200px'}} 
-          className={`cursor-pointer hover:text-purple-600 hover:scale-110 transition-all duration-300 transform ${filter === 'code' ? 'text-purple-600 scale-105' : ''}`}
+          style={{fontSize: '120px'}} 
+          className={`cursor-pointer hover:text-purple-600 hover:scale-110 transition-all duration-300 transform md:text-[200px] ${filter === 'code' ? 'text-purple-600 scale-105' : ''}`}
           onClick={() => setFilter(filter === 'code' ? 'all' : 'code')}
         />
         <CgGames 
-          style={{fontSize: '200px'}} 
-          className={`cursor-pointer hover:text-red-600 hover:scale-110 transition-all duration-300 transform ${filter === 'games' ? 'text-red-600 scale-105' : ''}`}
+          style={{fontSize: '120px'}} 
+          className={`cursor-pointer hover:text-red-600 hover:scale-110 transition-all duration-300 transform md:text-[200px] ${filter === 'games' ? 'text-red-600 scale-105' : ''}`}
           onClick={() => setFilter(filter === 'games' ? 'all' : 'games')}
         />
       </div>
-      <p className="text-sm mb-8">click on an icon to sort</p>
+      <p className="text-xs md:text-sm mb-4 md:mb-8">click on an icon to sort</p>
       
       <div className="mx-auto text-left overflow-x-auto">
         <div className="bg-gray-100 p-2 md:p-4 font-mono text-xs md:text-sm min-w-max">

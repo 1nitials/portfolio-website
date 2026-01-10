@@ -19,16 +19,16 @@ export default function Home() {
     <div className="min-h-screen bg-white">
 
       {/* Main Content */}
-      <div className="container mx-auto px-8 space-y-8">
+      <div className="container mx-auto px-4 md:px-8 space-y-8">
         {/* Row 1: Hero + Showcased Works */}
-        <div className="flex flex-col lg:flex-row gap-24 justify-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 justify-center">
           {/* Hero Card */}
-          <div className="border-2 border-black rounded-3xl p-8 w-fit">
-            <div className="flex items-center gap-6">
-              <div>
-                <h1 className="text-6xl font-extrabold text-black leading-none mb-1"
+          <div className="border-2 border-black rounded-3xl p-4 md:p-8 w-full lg:w-fit">
+            <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+              <div className="text-center sm:text-left">
+                <h1 className="text-4xl md:text-6xl font-extrabold text-black leading-none mb-1"
                 style={{textShadow: '3px 3px 0px rgba(0,0,0,0.3)'}}>RONNIE</h1>
-                <svg viewBox="0 0 180 38" height="40" className="block leading-none">
+                <svg viewBox="0 0 180 38" height="32" className="block leading-none md:h-10 mr-12 ml-auto sm:mx-0">
                   <text
                   x="0"
                   y="36"
@@ -42,11 +42,11 @@ export default function Home() {
                   1NITIALS
                   </text>
                 </svg>
-                <p className="text-gray-600 font-bold font-jura mt-1">
+                <p className="text-gray-600 font-bold font-jura mt-1 text-sm md:text-base">
                   developer, artist,
                   musician, and so on
                 </p>
-                <div className="flex gap-2 mt-2 justify-left text-gray-700">
+                <div className="flex gap-2 mt-2 justify-center sm:justify-left text-gray-700">
             <a href="https://github.com/1nitials" target="_blank" rel="noopener noreferrer">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hover:text-black">
                 <path d={siGithub.path} />
@@ -67,17 +67,18 @@ export default function Home() {
               <Image 
                 src={Dennis} 
                 alt="me"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
+                className="md:w-[200px] md:h-[200px]"
               />
             </div>
           </div>
 
           {/* Showcased Works */}
-          <div className="rounded-3xl p-8 w-fit">
-            <h2 className="text-4xl font-bold mb-6"
+          <div className="rounded-3xl p-4 md:p-8 w-full lg:w-fit">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-center lg:text-left"
             style={{textShadow: '2px 2px 0px rgba(0,0,0,0.3)'}}>SHOWCASED WORKS</h2>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border-2 border-black rounded-full"></div>
                 <span className="text-normal font-bold font-jura">suga games store</span>
@@ -101,14 +102,14 @@ export default function Home() {
         {/* Row 2: Updates + Work Activity */}
         <div className="flex flex-col lg:flex-row gap-8 justify-center">
           {/* Current Updates Panel */}
-          <div className="border-2 border-black rounded-3xl p-8 relative w-fit">
-            <div className="absolute -top-4 left-1 bg-white px-4">
+          <div className="border-2 border-black rounded-3xl p-4 md:p-8 relative w-full lg:w-fit">
+            <div className="absolute -top-4 left-1 bg-white px-2 md:px-4">
               <Image
                 src={CurrentUpdates}
                 alt="current updates"
-                width={250}
-                height={50}
-                className="block"
+                width={200}
+                height={40}
+                className="block md:w-[250px] md:h-[50px]"
               />
             </div>
             <div className="mt-4 space-y-4">
@@ -132,8 +133,8 @@ export default function Home() {
           </div>
 
           {/* Work Activity Panel */}
-          <div className="border-2 border-black rounded-3xl p-8 w-fit">
-            <h2 className="text-xl font-bold mb-4">XX amount of works this year</h2>
+          <div className="border-2 border-black rounded-3xl p-4 md:p-8 w-full lg:w-fit">
+            <h2 className="text-lg md:text-xl font-bold mb-4">XX amount of works this year</h2>
             
             {/* GitHub-style heatmap */}
             <div className="overflow-x-auto">
@@ -180,7 +181,7 @@ export default function Home() {
             {/* Work Summary */}
             <div className="mt-8 flex justify-end">
               <div className="text-center">
-                  <svg viewBox="0 0 300 44" height="40" className="block leading-none mx-auto mb-4">
+                  <svg viewBox="0 0 300 44" height="32" className="block leading-none mx-auto mb-4 md:h-10">
                     <text
                     x="150"
                     y="36"
