@@ -1,8 +1,11 @@
+'use client'
 import Image from "next/image"
 import Dennis from "../images/me.png"
+import CurrentUpdates from "../images/current_updates.gif"
 import { siGithub, siInstagram, siGmail } from 'simple-icons'
 import { featuredProjects, getIcon } from '../data/projects'
 import DoughnutChart from '../components/DoughnutChart'
+import { useState } from 'react'
 
 const months: string[] = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -13,6 +16,7 @@ const extraColumnMonths = new Set<number>([0, 2, 7, 10, 11]);
 const slotsPerMonth: number = 4;
 
 export default function Home() {
+  const [gifLoaded, setGifLoaded] = useState(false)
   return (
     <div className="min-h-screen bg-white">
 
@@ -24,7 +28,7 @@ export default function Home() {
           <div className="border-2 border-black rounded-3xl p-8 w-fit">
             <div className="flex items-center gap-6">
               <div>
-                <h1 className="text-5xl font-extrabold text-black leading-none mb-1"
+                <h1 className="text-6xl font-extrabold text-black leading-none mb-1"
                 style={{textShadow: '3px 3px 0px rgba(0,0,0,0.3)'}}>RONNIE</h1>
                 <svg viewBox="0 0 180 38" height="40" className="block leading-none">
                   <text
@@ -56,7 +60,7 @@ export default function Home() {
 
           {/* Showcased Works */}
           <div className="rounded-3xl p-8 w-fit">
-            <h2 className="text-3xl font-bold mb-6"
+            <h2 className="text-4xl font-bold mb-6"
             style={{textShadow: '2px 2px 0px rgba(0,0,0,0.3)'}}>SHOWCASED WORKS</h2>
             <div className="grid grid-cols-2 gap-6">
               <div className="flex items-center gap-3">
@@ -75,10 +79,6 @@ export default function Home() {
                 <div className="w-8 h-8 border-2 border-black rounded-full"></div>
                 <span className="text-normal font-bold font-jura">slap chop!</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 border-2 border-black rounded-full"></div>
-                <span className="text-normal font-bold font-jura">example</span>
-              </div>
             </div>
           </div>
         </div>
@@ -87,8 +87,14 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row gap-8 justify-center">
           {/* Current Updates Panel */}
           <div className="border-2 border-black rounded-3xl p-8 relative w-fit">
-            <div className="absolute -top-4 left-2 bg-white px-4">
-              <h2 className="text-xl font-bold">current updates</h2>
+            <div className="absolute -top-4 left-1 bg-white px-4">
+              <Image
+                src={CurrentUpdates}
+                alt="current updates"
+                width={250}
+                height={50}
+                className="block"
+              />
             </div>
             <div className="mt-4 space-y-4">
               <div>
@@ -158,8 +164,23 @@ export default function Home() {
             
             {/* Work Summary */}
             <div className="mt-8 flex justify-end">
-              <div>
-                <h3 className="text-lg font-bold mb-8 text-center">work summary</h3>
+              <div className="text-center">
+                  <svg viewBox="0 0 300 44" height="40" className="block leading-none mx-auto mb-4">
+                    <text
+                    x="150"
+                    y="36"
+                    fontSize="36"
+                    fontWeight="700"
+                    fill="white"
+                    stroke="black"
+                    strokeWidth="6"
+                    paintOrder="stroke"
+                    textAnchor="middle"
+                    fontFamily="Impact, Arial Black, sans-serif"
+                    >
+                    work summary
+                    </text>
+                  </svg>
                 <DoughnutChart />
               </div>
             </div>
