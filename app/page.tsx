@@ -157,32 +157,10 @@ export default function Home() {
             <p className="text-sm text-gray-500 mt-4">Works done on that day</p>
             
             {/* Work Summary */}
-            <div className="mt-8">
-              <h3 className="text-lg font-bold mb-4">work summary</h3>
-              <div className="flex justify-center">
-                <svg width="120" height="120" viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="#e5e7eb" strokeWidth="20" />
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="#3b82f6" strokeWidth="20" 
-                    strokeDasharray="94 314" strokeDashoffset="0" transform="rotate(-90 60 60)" />
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="#10b981" strokeWidth="20" 
-                    strokeDasharray="63 314" strokeDashoffset="-94" transform="rotate(-90 60 60)" />
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="#f59e0b" strokeWidth="20" 
-                    strokeDasharray="47 314" strokeDashoffset="-157" transform="rotate(-90 60 60)" />
-                </svg>
-              </div>
-              <div className="flex justify-center gap-4 mt-4 text-xs">
-                <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <span>Frontend</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span>Backend</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <span>Design</span>
-                </div>
+            <div className="mt-8 flex justify-end">
+              <div>
+                <h3 className="text-lg font-bold mb-8 text-center">work summary</h3>
+                <DoughnutChart />
               </div>
             </div>
           </div>
