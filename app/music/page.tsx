@@ -99,17 +99,17 @@ export default function Music() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 space-y-8 pb-8">
+      <div className="container mx-auto px-4 py-8 space-y-8 pb-8">
         
         {/* Top Hero Card */}
-        <div className="border-2 border-black rounded-3xl p-8">
-          <div className="flex items-center justify-center">
-            <div>
-              <h1 className="text-7xl font-extrabold text-black"
+        <div className="border-2 border-black rounded-3xl p-4 md:p-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+            <div className="min-w-0 flex-shrink">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-black text-center md:text-left break-words"
               style={{textShadow: '3px 3px 0px rgba(0,0,0,0.3)'}}>DISCOGRAPHY</h1>
-              <svg viewBox="0 0 600 72" height="72" className="block leading-none">
+              <svg viewBox="0 0 600 72" height="48" className="block leading-none md:h-[72px] mx-auto md:mx-0">
                 <text
-                x="0"
+                x="300"
                 y="60"
                 fontSize="60"
                 fontWeight="700"
@@ -117,70 +117,28 @@ export default function Music() {
                 stroke="black"
                 strokeWidth="3"
                 paintOrder="stroke"
+                textAnchor="middle"
                 >
                 COMING SOON!
                 </text>
               </svg>
             </div>
-            <div>
-              <Image alt="FL-chan" src={flchan} width={250} height={250}/>
-            </div>
+              <Image
+                alt="FL-chan"
+                src={flchan}
+                width={250}
+                height={250}
+                className="w-[150px] md:w-[250px] h-auto"
+              />
           </div>
         </div>
 
         {/* Main Content Card */}
-        <div className="border-2 border-black rounded-3xl p-8 mb-8">
-          <div className="flex gap-8">
+        <div className="border-2 border-black rounded-3xl p-4 md:p-8 mb-8">
+          <div className="flex flex-col lg:flex-row gap-4 md:gap-8">
             
-            {/* Left Section - Music Directory */}
-            <div className="flex-1 flex flex-col">
-              <h2 className="text-xl italic mb-4">music directory</h2>
-              
-              <div className="bg-gradient-to-b from-sky-100 via-sky-300 to-green-200 rounded-3xl p-8 flex-1">
-                {/* Header Row */}
-                <div className="flex gap-4 mb-6">
-                  <div className="border border-black rounded-full px-4 py-2 flex-1">
-                    <span className="italic">name</span>
-                  </div>
-                  <div className="border border-black rounded-full px-4 py-2 w-48">
-                    <span className="italic">date created</span>
-                  </div>
-                  <div className="border border-black rounded-full px-4 py-2 w-64">
-                    <span className="italic">tags</span>
-                  </div>
-                  <div className="border border-black rounded-full px-4 py-2 w-24">
-                    <span className="italic">duration</span>
-                  </div>
-                </div>
-                
-                {/* Track Rows */}
-                <div className="space-y-1">
-                  <audio ref={audioRef} src={selectedTrack?.directory} loop />
-                  {tracks.map((track) => (
-                    <div 
-                      key={track.id} 
-                      className={`flex items-center cursor-pointer p-2 rounded-lg transition-colors ${
-                        selectedTrack?.id === track.id ? 'bg-green-300' : 'hover:bg-green-200'
-                      }`}
-                      onClick={() => {
-                        setCurrentIndex(tracks.indexOf(track));
-                      }}
-                    >
-                      <div className="flex-1 flex items-center gap-2">
-                        <TbFileMusic size={24} />
-                        <span>{track.filename}</span>
-                      </div>
-                      <div className="w-48">{track.dateCreated}</div>
-                      <div className="w-64 px-4 truncate">{track.tags.join(', ')}...</div>
-                      <div className="w-24 px-12">{track.duration}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Section - Track Details / Player */}
-            <div className="w-80 space-y-2">
+            {/* Right Section - Track Details / Player (Top on mobile) */}
+            <div className="w-full lg:w-80 lg:max-w-80 lg:min-w-0 lg:flex-shrink-0 space-y-2 order-1 lg:order-2">
               
               {/* Album Cover */}
               <div className="bg-gray-100 rounded-3xl aspect-square flex items-center justify-center">
@@ -210,30 +168,30 @@ export default function Music() {
               </div>
               
               {/* Audio Controls */}
-              <div className="flex justify-center gap-2">
+              <div className="flex justify-center items-center gap-1 md:gap-2 flex-wrap">
                 <button 
-                  className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
                   onClick={prevTrack}
                 >
-                  <TbPlayerTrackPrevFilled size={16} />
+                  <TbPlayerTrackPrevFilled size={14} className="md:w-4 md:h-4" />
                 </button>
                 <button 
-                  className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
                   onClick={isPlaying ? pauseTrack : playTrack}
                 >
-                  {isPlaying ? <TbPlayerPauseFilled size={20} /> : <TbPlayerPlayFilled size={20} />}
+                  {isPlaying ? <TbPlayerPauseFilled size={18} className="md:w-5 md:h-5" /> : <TbPlayerPlayFilled size={18} className="md:w-5 md:h-5" />}
                 </button>
                 <button 
-                  className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
                   onClick={nextTrack}
                 >
-                  <TbPlayerTrackNextFilled size={16} />
+                  <TbPlayerTrackNextFilled size={14} className="md:w-4 md:h-4" />
                 </button>
                 <button 
-                  className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
                   onClick={muteTrack}
                 >
-                  {isMuted ? <TbVolumeOff size={16} /> : <TbVolume size={16} />}
+                  {isMuted ? <TbVolumeOff size={14} className="md:w-4 md:h-4" /> : <TbVolume size={14} className="md:w-4 md:h-4" />}
                 </button>
                 <input
                   type="range"
@@ -241,7 +199,7 @@ export default function Music() {
                   max={1}
                   step={0.02}
                   value={volume}
-                  className="cursor-pointer"
+                  className="cursor-pointer w-16 md:w-auto"
                   onChange={event => {
                     const newVolume = event.target.valueAsNumber;
                     setVolume(newVolume);
@@ -254,15 +212,62 @@ export default function Music() {
               </div>
               
               {/* Tags Box */}
-              <div className="border border-grey rounded-3xl p-4">
-                <span className="text-sm">{selectedTrack ? selectedTrack.tags.join(', ') : 'Select a track!'}</span>
+              <div className="border border-grey rounded-3xl p-3 md:p-4">
+                <span className="text-xs md:text-sm break-words">{selectedTrack ? selectedTrack.tags.join(', ') : 'Select a track!'}</span>
               </div>
               
               {/* Description Box */}
-              <div className="border border-grey rounded-3xl p-6 h-32">
-                <span className="text-gray-500 text-sm">{selectedTrack ? (selectedTrack.description || 'No description available') : 'Select a track to view details'}</span>
+              <div className="border border-grey rounded-3xl p-4 md:p-6 h-24 md:h-32">
+                <span className="text-gray-500 text-xs md:text-sm break-words">{selectedTrack ? (selectedTrack.description || 'No description available') : 'Select a track to view details'}</span>
               </div>
               
+            </div>
+
+            {/* Left Section - Music Directory (Bottom on mobile) */}
+            <div className="flex-1 flex flex-col order-2 lg:order-1">
+              <h2 className="text-lg md:text-xl italic mb-4">music directory</h2>
+              
+              <div className="bg-gradient-to-b from-sky-100 via-sky-300 to-green-200 rounded-3xl p-4 md:p-8 flex-1">
+                {/* Header Row - Desktop only */}
+                <div className="hidden xl:flex gap-4 mb-6">
+                  <div className="border border-black rounded-full px-4 py-2 flex-1">
+                    <span className="italic">name</span>
+                  </div>
+                  <div className="border border-black rounded-full px-4 py-2 w-48">
+                    <span className="italic">date created</span>
+                  </div>
+                  <div className="border border-black rounded-full px-4 py-2 w-64">
+                    <span className="italic">tags</span>
+                  </div>
+                  <div className="border border-black rounded-full px-4 py-2 w-24">
+                    <span className="italic">duration</span>
+                  </div>
+                </div>
+                
+                {/* Track Rows */}
+                <div className="space-y-1">
+                  <audio ref={audioRef} src={selectedTrack?.directory} loop />
+                  {tracks.map((track) => (
+                    <div 
+                      key={track.id} 
+                      className={`flex items-center cursor-pointer p-2 rounded-lg transition-colors ${
+                        selectedTrack?.id === track.id ? 'bg-green-300' : 'hover:bg-green-200'
+                      }`}
+                      onClick={() => {
+                        setCurrentIndex(tracks.indexOf(track));
+                      }}
+                    >
+                      <div className="flex-1 flex items-center gap-2 min-w-0">
+                        <TbFileMusic size={20} className="flex-shrink-0" />
+                        <span className="text-sm md:text-base truncate">{track.filename}</span>
+                      </div>
+                      <div className="hidden xl:block w-48">{track.dateCreated}</div>
+                      <div className="hidden xl:block w-64 px-4 truncate">{track.tags.join(', ')}...</div>
+                      <div className="w-16 md:w-24 md:px-12 text-right text-sm md:text-base">{track.duration}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
