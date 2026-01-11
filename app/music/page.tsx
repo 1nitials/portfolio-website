@@ -2,13 +2,17 @@
 import { useRef, useEffect, useState } from 'react'
 import Image from "next/image"
 import flchan from "../../images/fl_chan.gif"
-import { TbPlayerTrackPrevFilled, TbPlayerTrackNextFilled, TbPlayerPlayFilled, TbPlayerPauseFilled, TbFileMusic } from 'react-icons/tb'
+import { TbPlayerTrackPrevFilled, TbPlayerTrackNextFilled, TbPlayerPlayFilled, 
+  TbPlayerPauseFilled, TbFileMusic, TbVolume, TbVolumeOff } from 'react-icons/tb'
 import { getAllTracks} from '../../data/music'
 
 export default function Music() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const tracks = getAllTracks()
+  const [volume, setVolume] = useState(1)
+  const [prevVolume, setPrevVolume] = useState(0)
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const selectedTrack =
@@ -41,6 +45,20 @@ export default function Music() {
       currentIndex === 0 ? tracks.length - 1 : currentIndex - 1
     );
   };
+
+  const muteTrack = () => {
+    if (!isMuted) {
+      setVolume(0)
+      setPrevVolume(volume)
+      setIsMuted(true)
+      if (audioRef.current) audioRef.current.volume = 0
+    }
+    else {
+      setIsMuted(false)
+      setVolume(prevVolume)
+      if (audioRef.current) audioRef.current.volume = prevVolume
+    }
+  }
 
   useEffect(() => {
     if (!audioRef.current || !selectedTrack) return;
@@ -110,7 +128,7 @@ export default function Music() {
             <div className="flex-1 flex flex-col">
               <h2 className="text-xl italic mb-4">music directory</h2>
               
-              <div className="bg-gradient-to-b from-sky-100 to-sky-300 rounded-3xl p-8 flex-1">
+              <div className="bg-gradient-to-b from-sky-100 via-sky-300 to-green-200 rounded-3xl p-8 flex-1">
                 {/* Header Row */}
                 <div className="flex gap-4 mb-6">
                   <div className="border border-black rounded-full px-4 py-2 flex-1">
@@ -131,7 +149,7 @@ export default function Music() {
                     <div 
                       key={track.id} 
                       className={`flex items-center cursor-pointer p-2 rounded-lg transition-colors ${
-                        selectedTrack?.id === track.id ? 'bg-green-200' : 'hover:bg-green-100'
+                        selectedTrack?.id === track.id ? 'bg-green-300' : 'hover:bg-green-200'
                       }`}
                       onClick={() => {
                         setCurrentIndex(tracks.indexOf(track));
@@ -177,6 +195,27 @@ export default function Music() {
                 >
                   <TbPlayerTrackNextFilled size={16} />
                 </button>
+                <button 
+                  className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
+                  onClick={muteTrack}
+                >
+                  {isMuted ? <TbVolumeOff size={16} /> : <TbVolume size={16} />}
+                </button>
+                <input
+                  type="range"
+                  min={0}
+                  max={1}
+                  step={0.02}
+                  value={volume}
+                  onChange={event => {
+                    const newVolume = event.target.valueAsNumber;
+                    setVolume(newVolume);
+                    setIsMuted(newVolume === 0);
+                    if (audioRef.current) {
+                      audioRef.current.volume = newVolume;
+                    }
+                  }}
+                />
               </div>
               
               {/* Tags Box */}
