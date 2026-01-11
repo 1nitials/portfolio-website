@@ -3,37 +3,30 @@ import { useRef, useEffect, useState } from 'react'
 import Image from "next/image"
 import flchan from "../../images/fl_chan.gif"
 import { TbPlayerTrackPrevFilled, TbPlayerTrackNextFilled, TbPlayerPlayFilled, TbPlayerPauseFilled, TbFileMusic } from 'react-icons/tb'
-import { getAllTracks, Track } from '../../data/music'
+import { getAllTracks} from '../../data/music'
 
 export default function Music() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const tracks = getAllTracks()
-  const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const selectedTrack = tracks[currentIndex];
 
   const playTrack = () => {
-    if (audioRef.current && selectedTrack) {
-      audioRef.current.play().catch(() => {});
-    }
+    audioRef.current?.play().catch(() => {});
   };
 
   const pauseTrack = () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-    }
+    audioRef.current?.pause();
   };
 
   const nextTrack = () => {
-    const nextIndex = (currentIndex + 1) % tracks.length;
-    setCurrentIndex(nextIndex);
-    setSelectedTrack(tracks[nextIndex]);
+    setCurrentIndex((i) => (i + 1) % tracks.length);
   };
 
   const prevTrack = () => {
-    const prevIndex = currentIndex === 0 ? tracks.length - 1 : currentIndex - 1;
-    setCurrentIndex(prevIndex);
-    setSelectedTrack(tracks[prevIndex]);
+    setCurrentIndex((i) => (i === 0 ? tracks.length - 1 : i - 1));
   };
 
   useEffect(() => {
@@ -128,7 +121,6 @@ export default function Music() {
                         selectedTrack?.id === track.id ? 'bg-green-200' : 'hover:bg-green-100'
                       }`}
                       onClick={() => {
-                        setSelectedTrack(track);
                         setCurrentIndex(tracks.indexOf(track));
                       }}
                     >
