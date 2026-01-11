@@ -3,7 +3,7 @@ import Image from "next/image"
 import Dennis from "../images/me.png"
 import CurrentUpdates from "../images/current_updates.gif"
 import { siGithub, siInstagram, siGmail } from 'simple-icons'
-import { featuredProjects, getIcon } from '../data/projects'
+import { FaGamepad, FaFileCode } from "react-icons/fa";
 import DoughnutChart from '../components/DoughnutChart'
 
 const months: string[] = [
@@ -79,22 +79,22 @@ export default function Home() {
             <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-center lg:text-left"
             style={{textShadow: '2px 2px 0px rgba(0,0,0,0.3)'}}>SHOWCASED WORKS</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 border-2 border-black rounded-full"></div>
+              <a href="https://www.sugagamestore.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                <FaFileCode size={32}/>
                 <span className="text-normal font-bold font-jura">suga games store</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 border-2 border-black rounded-full"></div>
+              </a>
+              <a href="https://quizquest.codex-source.com/index_quiz.html" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                <FaFileCode size={32}/>
                 <span className="text-normal font-bold font-jura">quiz quest</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 border-2 border-black rounded-full"></div>
+              </a>
+              <a href="https://github.com/1nitials/safedrive-insurance" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                <FaFileCode size={32}/>
                 <span className="text-normal font-bold font-jura">safedrive insurance</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 border-2 border-black rounded-full"></div>
+              </a>
+              <a href="https://1nitials.itch.io/slap-chop" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                <FaGamepad size={32}/>
                 <span className="text-normal font-bold font-jura">slap chop!</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -115,19 +115,7 @@ export default function Home() {
             <div className="mt-4 space-y-4">
               <div>
                 <div className="font-bold text-sm">1.11.26</div>
-                <div className="text-gray-600 text-sm">lorem ipsum lorem ipsum</div>
-              </div>
-              <div>
-                <div className="font-bold text-sm">1.11.26</div>
-                <div className="text-gray-600 text-sm">lorem ipsum lorem ipsum</div>
-              </div>
-              <div>
-                <div className="font-bold text-sm">1.11.26</div>
-                <div className="text-gray-600 text-sm">lorem ipsum lorem ipsum</div>
-              </div>
-              <div>
-                <div className="font-bold text-sm">1.11.26</div>
-                <div className="text-gray-600 text-sm">lorem ipsum lorem ipsum</div>
+                <div className="text-gray-600 text-sm">website redesign underway!</div>
               </div>
             </div>
           </div>
