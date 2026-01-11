@@ -193,7 +193,7 @@ export default function Music() {
               </div>
               
               {/* Audio Controls */}
-              <div className="flex justify-center items-center gap-1 md:gap-2 flex-wrap">
+              <div className="flex justify-center items-center gap-1 flex-wrap">
                 <button 
                   className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center hover:bg-gray-100"
                   onClick={prevTrack}
@@ -242,7 +242,7 @@ export default function Music() {
               </div>
               
               {/* Description Box */}
-              <div className="border border-grey rounded-3xl p-4 md:p-6 h-24 md:h-32">
+              <div className="border border-grey rounded-3xl p-4 md:p-6 min-h-24 md:min-h-32">
                 <span className="text-gray-500 text-xs md:text-sm break-words">{selectedTrack ? (selectedTrack.description || 'No description available') : 'Select a track to view details'}</span>
               </div>
               

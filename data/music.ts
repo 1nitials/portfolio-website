@@ -13,7 +13,7 @@ export const tracks: Track[] = [
     id: "1",
     filename: "shortwork_jazz.mp3",
     directory: "/audio/shortwork_jazz.mp3",
-    dateCreated: "30-11-2025 @ 1:07",
+    dateCreated: "30-12-2025 @ 1:07",
     tags: ["jazz", "short", "demo", "warmup"],
     description: "A short jazz piece made to test out audio libraries",
     duration: "0:23"
@@ -22,7 +22,7 @@ export const tracks: Track[] = [
     id: "2", 
     filename: "taxi_sampled.mp3",
     directory: "/audio/taxi_sampled_2.mp3",
-    dateCreated: "23-11-2025 @ 13:59",
+    dateCreated: "23-12-2025 @ 13:59",
     tags: ["vaporwave", "sample", "remix", "breakbeats"],
     description: "Vaporwave-esque remix sampling a friends song",
     duration: "2:00"
@@ -35,6 +35,33 @@ export const tracks: Track[] = [
     tags: ["experimental", "sample", "remix", "beat", "electronic", "jazz"],
     description: "Experimental beat that is also a remix sampling a friends song",
     duration: "0:48"
+  },
+  {
+    id: "4",
+    filename: "iceage.mp3",
+    directory: "/audio/iceage.mp3", 
+    dateCreated: "1-9-2025 @ 8:56",
+    tags: ["vaporwave", "80s", "city pop", "original"],
+    description: "Gameplay theme for a game jam a while back, usually you would sample tracks to create vaporwave but I made the original song from scratch then slowed it down.",
+    duration: "1:21"
+  },
+  {
+    id: "5",
+    filename: "grass_area.mp3",
+    directory: "/audio/grass_area.mp3", 
+    dateCreated: "3-8-2025 @ 21:23",
+    tags: ["chiptune", "pc-98", "city pop", "retro"],
+    description: "Gameplay theme for my GMTK Game Jam entry, uses PC-98 soundfont and takes inspiration from the chiptune music of the same soundchip.",
+    duration: "1:34"
+  },
+  {
+    id: "6",
+    filename: "isnt she lovely test.mp3",
+    directory: "/audio/isnt she lovely test.mp3", 
+    dateCreated: "27-10-2025 @ 13:28",
+    tags: ["electric guitar", "cover", "demo"],
+    description: "Short cover to test new recording equipment",
+    duration: "0:41"
   }
 ]
 
