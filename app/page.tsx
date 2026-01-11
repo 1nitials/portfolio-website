@@ -19,7 +19,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 md:px-8 space-y-8">
+      <div className="container mx-auto px-4 md:px-8 space-y-8 pb-4">
         {/* Row 1: Hero + Showcased Works */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 justify-center">
           {/* Hero Card */}
@@ -198,6 +198,22 @@ export default function Home() {
                     </text>
                   </svg>
                 <DoughnutChart />
+                  <svg viewBox="0 0 300 44" height="32" className="block leading-none mx-auto mt-2 mb-4 md:h-10">
+                    <text
+                    x="150"
+                    y="36"
+                    fontSize="36"
+                    fontWeight="700"
+                    fill="white"
+                    stroke="black"
+                    strokeWidth="6"
+                    paintOrder="stroke"
+                    textAnchor="middle"
+                    fontFamily="Impact, Arial Black, sans-serif"
+                    >
+                    bottom text
+                    </text>
+                  </svg>
               </div>
             </div>
           </div>
