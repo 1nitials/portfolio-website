@@ -10,7 +10,9 @@ export default function Music() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const tracks = getAllTracks()
   const [volume, setVolume] = useState(1)
-  const [prevVolume, setPrevVolume] = useState(0)
+  const [prevVolume, setPrevVolume] = useState(1)
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -77,15 +79,21 @@ export default function Music() {
     const handleEnded = () => setIsPlaying(false);
     const handlePause = () => setIsPlaying(false);
     const handlePlay = () => setIsPlaying(true);
+    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const handleLoadedMetadata = () => setDuration(audio.duration);
     
     audio.addEventListener('ended', handleEnded);
     audio.addEventListener('pause', handlePause);
     audio.addEventListener('play', handlePlay);
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     
     return () => {
       audio.removeEventListener('ended', handleEnded);
       audio.removeEventListener('pause', handlePause);
       audio.removeEventListener('play', handlePlay);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
     };
   }, []);
 
@@ -140,6 +148,9 @@ export default function Music() {
                   <div className="border border-black rounded-full px-4 py-2 w-64">
                     <span className="italic">tags</span>
                   </div>
+                  <div className="border border-black rounded-full px-4 py-2 w-24">
+                    <span className="italic">duration</span>
+                  </div>
                 </div>
                 
                 {/* Track Rows */}
@@ -161,6 +172,7 @@ export default function Music() {
                       </div>
                       <div className="w-48">{track.dateCreated}</div>
                       <div className="w-64 px-4 truncate">{track.tags.join(', ')}...</div>
+                      <div className="w-24 px-12">{track.duration}</div>
                     </div>
                   ))}
                 </div>
@@ -173,6 +185,28 @@ export default function Music() {
               {/* Album Cover */}
               <div className="bg-gray-100 rounded-3xl aspect-square flex items-center justify-center">
                 <span className="text-gray-500">album cover here</span>
+              </div>
+
+              {/* Progress Bar */}
+              <div>
+                <input 
+                  type="range"
+                  min={0}
+                  max={duration || 0}
+                  step={0.02}
+                  value={currentTime}
+                  className="w-full cursor-pointer"
+                  onChange={event => {
+                    const newTime = event.target.valueAsNumber;
+                    setCurrentTime(newTime);
+                    if (audioRef.current) {
+                      audioRef.current.currentTime = newTime;
+                    }
+                  }}/>
+                <div>
+                  <span className="text-xs text-gray-500">{Math.floor(currentTime / 60)}:{Math.floor(currentTime % 60).toString().padStart(2, '0')}</span>
+                  <span className="text-xs text-gray-500 float-right">{selectedTrack ? selectedTrack.duration : '-:--'}</span>
+                </div>
               </div>
               
               {/* Audio Controls */}
@@ -207,6 +241,7 @@ export default function Music() {
                   max={1}
                   step={0.02}
                   value={volume}
+                  className="cursor-pointer"
                   onChange={event => {
                     const newVolume = event.target.valueAsNumber;
                     setVolume(newVolume);

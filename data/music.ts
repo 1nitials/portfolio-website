@@ -5,7 +5,7 @@ export interface Track {
   dateCreated: string
   tags: string[]
   description?: string
-  duration?: string
+  duration: string
 }
 
 export const tracks: Track[] = [
