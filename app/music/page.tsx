@@ -8,10 +8,11 @@ import { getAllTracks} from '../../data/music'
 export default function Music() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const tracks = getAllTracks()
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const selectedTrack = tracks[currentIndex];
+  const selectedTrack =
+    currentIndex !== null ? tracks[currentIndex] : null;
 
   const playTrack = () => {
     audioRef.current?.play().catch(() => {});
@@ -22,11 +23,23 @@ export default function Music() {
   };
 
   const nextTrack = () => {
-    setCurrentIndex((i) => (i + 1) % tracks.length);
+    if (currentIndex === null) {
+      setCurrentIndex(0);
+      return;
+    }
+
+    setCurrentIndex((currentIndex + 1) % tracks.length);
   };
 
   const prevTrack = () => {
-    setCurrentIndex((i) => (i === 0 ? tracks.length - 1 : i - 1));
+    if (currentIndex === null) {
+      setCurrentIndex(tracks.length - 1);
+      return;
+    }
+
+    setCurrentIndex(
+      currentIndex === 0 ? tracks.length - 1 : currentIndex - 1
+    );
   };
 
   useEffect(() => {
