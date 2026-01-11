@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react'
 import Image from "next/image"
 import flchan from "../../images/fl_chan.gif"
 import { TbPlayerTrackPrevFilled, TbPlayerTrackNextFilled, TbPlayerPlayFilled, 
-  TbPlayerPauseFilled, TbFileMusic, TbVolume, TbVolumeOff } from 'react-icons/tb'
+  TbPlayerPauseFilled, TbFileMusic, TbVolume, TbVolumeOff, TbChevronUp, TbChevronDown } from 'react-icons/tb'
 import { getAllTracks} from '../../data/music'
 
 export default function Music() {
@@ -16,9 +16,34 @@ export default function Music() {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [tagSearchTerm, setTagSearchTerm] = useState('');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   const selectedTrack =
     currentIndex !== null ? tracks[currentIndex] : null;
+
+  const parseDate = (dateStr: string) => {
+    const [datePart] = dateStr.split(' @ ');
+    const [day, month, year] = datePart.split('-');
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day)).getTime();
+  };
+
+  const filteredTracks = tracks
+    .filter(track =>
+      track.filename.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (
+        tagSearchTerm === "" ||
+        track.tags.some(tag =>
+          tag.toLowerCase().includes(tagSearchTerm.toLowerCase())
+        )
+      )
+    )
+    .sort((a, b) => {
+      const dateA = parseDate(a.dateCreated);
+      const dateB = parseDate(b.dateCreated);
+      return sortOrder === "desc" ? dateB - dateA : dateA - dateB;
+    });
 
   const playTrack = () => {
     audioRef.current?.play().catch(() => {});
@@ -231,13 +256,27 @@ export default function Music() {
                 {/* Header Row - Desktop only */}
                 <div className="hidden xl:flex gap-4 mb-6">
                   <div className="border border-black rounded-full px-4 py-2 flex-1">
-                    <span className="italic">name</span>
+                    <input 
+                      type="text" 
+                      placeholder="search name..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full bg-transparent outline-none italic placeholder-gray-500"
+                    />
                   </div>
-                  <div className="border border-black rounded-full px-4 py-2 w-48">
+                  <div className="border border-black rounded-full px-4 py-2 w-48 flex items-center justify-between cursor-pointer hover:bg-black hover:bg-opacity-10"
+                       onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}>
                     <span className="italic">date created</span>
+                    {sortOrder === 'desc' ? <TbChevronDown size={16} /> : <TbChevronUp size={16} />}
                   </div>
                   <div className="border border-black rounded-full px-4 py-2 w-64">
-                    <span className="italic">tags</span>
+                    <input 
+                      type="text" 
+                      placeholder="search tags..."
+                      value={tagSearchTerm}
+                      onChange={(e) => setTagSearchTerm(e.target.value)}
+                      className="w-full bg-transparent outline-none italic placeholder-gray-500"
+                    />
                   </div>
                   <div className="border border-black rounded-full px-4 py-2 w-24">
                     <span className="italic">duration</span>
@@ -247,7 +286,7 @@ export default function Music() {
                 {/* Track Rows */}
                 <div className="space-y-1">
                   <audio ref={audioRef} src={selectedTrack?.directory} loop />
-                  {tracks.map((track) => (
+                  {filteredTracks.map((track) => (
                     <div 
                       key={track.id} 
                       className={`flex items-center cursor-pointer p-2 rounded-lg transition-colors ${
