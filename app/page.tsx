@@ -5,6 +5,7 @@ import CurrentUpdates from "../images/current_updates.gif"
 import { siGithub, siInstagram, siGmail } from 'simple-icons'
 import { FaGamepad, FaFileCode } from "react-icons/fa";
 import DoughnutChart from '../components/DoughnutChart'
+import Tooltip from "@mui/material/Tooltip";
 
 const months: string[] = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -79,22 +80,34 @@ export default function Home() {
             <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-center lg:text-left"
             style={{textShadow: '2px 2px 0px rgba(0,0,0,0.3)'}}>SHOWCASED WORKS</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-              <a href="https://www.sugagamestore.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
-                <FaFileCode size={32}/>
-                <span className="text-normal font-bold font-jura">suga games store</span>
-              </a>
-              <a href="https://quizquest.codex-source.com/index_quiz.html" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
-                <FaFileCode size={32}/>
-                <span className="text-normal font-bold font-jura">quiz quest</span>
-              </a>
-              <a href="https://github.com/1nitials/safedrive-insurance" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
-                <FaFileCode size={32}/>
-                <span className="text-normal font-bold font-jura">safedrive insurance</span>
-              </a>
-              <a href="https://1nitials.itch.io/slap-chop" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
-                <FaGamepad size={32}/>
-                <span className="text-normal font-bold font-jura">slap chop!</span>
-              </a>
+
+              <Tooltip title="test" placement="top" arrow>
+                <a href="https://www.sugagamestore.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                  <FaFileCode size={32}/>
+                  <span className="text-normal font-bold font-jura">suga games store</span>
+                </a>
+              </Tooltip>
+
+              <Tooltip title="test" placement="top" arrow>
+                <a href="https://quizquest.codex-source.com/index_quiz.html" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                  <FaFileCode size={32}/>
+                  <span className="text-normal font-bold font-jura">quiz quest</span>
+                </a>
+              </Tooltip>
+
+              <Tooltip title="test" placement="top" arrow>
+                <a href="https://github.com/1nitials/safedrive-insurance" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                  <FaFileCode size={32}/>
+                  <span className="text-normal font-bold font-jura">safedrive insurance</span>
+                </a>
+              </Tooltip>
+
+              <Tooltip title="test" placement="top" arrow>
+                <a href="https://1nitials.itch.io/slap-chop" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                  <FaGamepad size={32}/>
+                  <span className="text-normal font-bold font-jura">slap chop!</span>
+                </a>
+              </Tooltip>
             </div>
           </div>
         </div>
