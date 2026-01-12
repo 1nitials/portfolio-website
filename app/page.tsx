@@ -248,7 +248,7 @@ export default function Home() {
               </div>
             </div>
             
-            <p className="text-sm text-gray-500 mt-4">Works done on that day</p>
+            <p className="text-sm text-gray-500 mt-4">Functionality coming soon!</p>
             
             {/* Work Summary */}
             <div className="mt-8 flex justify-end">
