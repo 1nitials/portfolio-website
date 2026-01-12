@@ -1,6 +1,10 @@
 'use client'
 import Image from "next/image"
 import Dennis from "../images/me.png"
+import SlapChop from "../images/slapchop.png"
+import Default from "../images/defaultlabs.png"
+import SugaGames from "../images/sugagames.png"
+import QuizQuest from "../images/quizquest.png"
 import CurrentUpdates from "../images/current_updates.gif"
 import { siGithub, siInstagram, siGmail } from 'simple-icons'
 import { FaGamepad, FaFileCode } from "react-icons/fa";
@@ -81,28 +85,95 @@ export default function Home() {
             style={{textShadow: '2px 2px 0px rgba(0,0,0,0.3)'}}>SHOWCASED WORKS</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
 
-              <Tooltip title="test" placement="top" arrow>
+              <Tooltip
+                placement="top"
+                arrow
+                title={
+                <div className="flex flex-col items-center gap-2 p-1">
+                <Image
+                  src={Default}
+                  alt="default labs preview"
+                  className="w-48 rounded-md"
+                />
+                <span className="text-center w-48">
+                Game studio website coming soon!
+                </span>
+                </div>
+                }
+              >
+                <a href="https://www.defaultlabs.net/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
+                  <FaFileCode size={32}/>
+                  <span className="text-normal font-bold font-jura">default labs</span>
+                </a>
+              </Tooltip>
+
+              <Tooltip
+                placement="top"
+                arrow
+                title={
+                <div className="flex flex-col items-center gap-2 p-1">
+                <Image
+                  src={SugaGames}
+                  alt="Suga Games Store preview"
+                  className="w-48 rounded-md"
+                />
+                <span className="text-center w-48">
+                Full stack e-commerce website with 150+ users and counting
+                </span>
+                </div>
+                }
+              >
                 <a href="https://www.sugagamestore.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
                   <FaFileCode size={32}/>
                   <span className="text-normal font-bold font-jura">suga games store</span>
                 </a>
               </Tooltip>
 
-              <Tooltip title="test" placement="top" arrow>
+              <Tooltip
+                placement="top"
+                arrow
+                title={
+                <div className="flex flex-col items-center gap-2 p-1">
+                <Image
+                  src={QuizQuest}
+                  alt="Quiz Quest preview"
+                  className="w-48 rounded-md"
+                />
+                <span className="text-center w-48">
+                AI quiz generator, winner of Hackwknd 2024
+                </span>
+                </div>
+                }
+              >
                 <a href="https://quizquest.codex-source.com/index_quiz.html" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
                   <FaFileCode size={32}/>
                   <span className="text-normal font-bold font-jura">quiz quest</span>
                 </a>
               </Tooltip>
 
-              <Tooltip title="test" placement="top" arrow>
+              <Tooltip title="Year 2 Database and Concept Design Project" placement="top" arrow>
                 <a href="https://github.com/1nitials/safedrive-insurance" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
                   <FaFileCode size={32}/>
                   <span className="text-normal font-bold font-jura">safedrive insurance</span>
                 </a>
               </Tooltip>
 
-              <Tooltip title="test" placement="top" arrow>
+              <Tooltip
+                placement="top"
+                arrow
+                title={
+                <div className="flex flex-col items-center gap-2 p-1">
+                <Image
+                  src={SlapChop}
+                  alt="Slap Chop preview"
+                  className="w-24 rounded-md"
+                />
+                <span className="text-center w-48">
+                Rhythm minigame made for a game jam
+                </span>
+                </div>
+                }
+              >
                 <a href="https://1nitials.itch.io/slap-chop" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:scale-[1.05] transition-scale">
                   <FaGamepad size={32}/>
                   <span className="text-normal font-bold font-jura">slap chop!</span>
